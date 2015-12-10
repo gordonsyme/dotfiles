@@ -1,0 +1,16 @@
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+
+alias ga='git add'
+alias gb='git branch'
+alias gc='git checkout'
+alias gcln='git clean -i'
+alias gd='git diff'
+alias gdc='git diff --cached'
+alias gl='git log'
+alias glp='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit --date=relative'
+alias grep='grep --color=auto'
+alias gs='git status'
+alias gvimgrep='GIT_PAGER=vim git grep -O'
+
+alias vagrant_ssh_ports='vagrant ssh -- -L 8080:localhost:8080 -L 6005:localhost:6005 -L 3333:localhost:3333'

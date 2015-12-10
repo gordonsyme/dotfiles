@@ -1,0 +1,28 @@
+# vim:ft=sh
+
+if ! type vim_plugin | head -1 | grep "is a function"; then
+  vim_plugin() {
+    local github_repo=$1
+
+    mkdir -p ~/.vim/bundle
+    git clone git://github.com/${github_repo}.git ~/.vim/bundle
+  }
+fi
+
+vim_plugin tpope/vim-pathogen
+vim_plugin kien/rainbow_parentheses.vim
+vim_plugin bling/vim-airline
+vim_plugin tpope/vim-classpath
+vim_plugin guns/vim-clojure-static.git
+vim_plugin altercation/vim-colors-solarized.git
+vim_plugin tpope/vim-fireplace
+vim_plugin tpope/vim-fugitive
+
+if [ ! -L ~/.vim/autoload ]; then
+  (
+    cd ~/.vim
+    ln -fns bundle/vim-pathogen/autoload
+  )
+fi
+
+cp ${DOTFILES_ROOT}/.vimrc ~/.vimrc
