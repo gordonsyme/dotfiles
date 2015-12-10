@@ -1,0 +1,5 @@
+source ${ROOT}/lib/functions
+
+dotfile .bashrc
+dotfile .bash_profile
+dotfile .bash_aliases

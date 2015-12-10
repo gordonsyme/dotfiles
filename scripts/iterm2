@@ -1,0 +1,6 @@
+# vim: set ft=sh
+
+source ${ROOT}/lib/functions
+
+package iterm2
+

@@ -1,11 +1,13 @@
-# vim:ft=sh
+# vim: set ft=sh
 
-if ! type vim_plugin | head -1 | grep "is a function"; then
+source ${ROOT}/lib/functions
+
+if ! (type vim_plugin | head -1 | grep "is a function") 2>/dev/null; then
   vim_plugin() {
     local github_repo=$1
 
     mkdir -p ~/.vim/bundle
-    git clone git://github.com/${github_repo}.git ~/.vim/bundle/$(basename ${github_repo})
+    clone_github ${github_repo} ~/.vim/bundle
   }
 fi
 
