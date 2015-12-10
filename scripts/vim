@@ -5,7 +5,7 @@ if ! type vim_plugin | head -1 | grep "is a function"; then
     local github_repo=$1
 
     mkdir -p ~/.vim/bundle
-    git clone git://github.com/${github_repo}.git ~/.vim/bundle
+    git clone git://github.com/${github_repo}.git ~/.vim/bundle/$(basename ${github_repo})
   }
 fi
 
@@ -13,8 +13,8 @@ vim_plugin tpope/vim-pathogen
 vim_plugin kien/rainbow_parentheses.vim
 vim_plugin bling/vim-airline
 vim_plugin tpope/vim-classpath
-vim_plugin guns/vim-clojure-static.git
-vim_plugin altercation/vim-colors-solarized.git
+vim_plugin guns/vim-clojure-static
+vim_plugin altercation/vim-colors-solarized
 vim_plugin tpope/vim-fireplace
 vim_plugin tpope/vim-fugitive
 
@@ -26,3 +26,5 @@ if [ ! -L ~/.vim/autoload ]; then
 fi
 
 cp ${DOTFILES_ROOT}/.vimrc ~/.vimrc
+mkdir -p ~/.vim/include
+cp ${INCLUDES_ROOT}/vim/* ~/.vim/include
