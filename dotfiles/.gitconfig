@@ -1,0 +1,11 @@
+[color]
+    ui = true
+[core]
+    pager = less -FMRiX
+    excludesfile = ~/.gitexcludes
+[alias]
+    dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\"%cn\" <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
+[push]
+    default = tracking
+[rerere]
+	enabled = true

@@ -1,0 +1,10 @@
+*.swp
+*.swo
+TAGS
+/build
+/runpy
+*.pyc
+/eclipse-bin
+/.classpath
+/.project
+.svn/
