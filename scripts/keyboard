@@ -1,0 +1,3 @@
+source ${ROOT}/lib/functions
+
+cp ${ROOT}/include/Keyboard\ Layouts/* ~/Libary/Keyboard\ Layouts/
