@@ -1,6 +1,8 @@
-# vim: set ft=sh
+# vim:ft=sh
 
 source ${ROOT}/lib/functions
+
+source ${ROOT}/scripts/git
 
 if ! (type vim_plugin | head -1 | grep "is a function") 2>/dev/null; then
   vim_plugin() {
@@ -10,6 +12,8 @@ if ! (type vim_plugin | head -1 | grep "is a function") 2>/dev/null; then
     clone_github ${github_repo} ~/.vim/bundle
   }
 fi
+
+brew_install vim
 
 vim_plugin tpope/vim-pathogen
 vim_plugin kien/rainbow_parentheses.vim
@@ -27,6 +31,6 @@ if [ ! -L ~/.vim/autoload ]; then
   )
 fi
 
-cp ${DOTFILES_ROOT}/.vimrc ~/.vimrc
+dotfile .vimrc
 mkdir -p ~/.vim/include
 cp ${INCLUDES_ROOT}/vim/* ~/.vim/include

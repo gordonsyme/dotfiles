@@ -2,5 +2,5 @@
 
 source ${ROOT}/lib/functions
 
-package iterm2
+brew_cask iterm2
 

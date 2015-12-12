@@ -1,0 +1,4 @@
+source ${ROOT}/lib/functions
+
+brew_cask virtualbox
+brew_cask vagrant
