@@ -13,4 +13,4 @@ alias grep='grep --color=auto'
 alias gs='git status'
 alias gvimgrep='GIT_PAGER=vim git grep -O'
 
-alias vagrant_ssh_ports='vagrant ssh -- -L 8080:localhost:8080 -L 6005:localhost:6005 -L 3333:localhost:3333'
+alias vagrant_ssh_ports='vagrant ssh -- -L 8080:localhost:8080 -L 6005:localhost:6005 -L 3333:localhost:3333 -R 60111:localhost:60111'
