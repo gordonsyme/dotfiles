@@ -6,7 +6,7 @@ usage() {
 }
 
 _command=$1
-if [ -z ${_command} ]; then
+if [ -z "${_command}" ]; then
   usage
 fi
 
@@ -18,20 +18,23 @@ case "${1}" in
 
   logs)
     _container=$2
-    if [ -z ${_container} ]; then
+    if [ -z "${_container}" ]; then
       usage
     fi
-    docker logs ${_container} 2>&1 | less
+    _tmpfile=$(mktemp "docker-logs.XXXXX")
+    docker logs -f "${_container}" > "${_tmpfile}" 2>&1 &
+    sleep 0.1
+    less +G "${_tmpfile}"; kill %; rm "${_tmpfile}"
     exit $?
     ;;
 
   stop)
     _container=$2
-    if [ -z ${_container} ]; then
+    if [ -z "${_container}" ]; then
       usage
     fi
-    docker stop ${_container}
-    docker rm -v ${_container}
+    docker stop "${_container}"
+    docker rm -v "${_container}"
     exit $?
     ;;
 
