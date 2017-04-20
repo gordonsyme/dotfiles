@@ -39,6 +39,6 @@ case "${1}" in
     ;;
 
   *)
-    usage
+    docker "$@"
     ;;
 esac

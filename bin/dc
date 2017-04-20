@@ -7,7 +7,7 @@ usage() {
 
 _command=$1
 shift
-if [ -z ${_command} ]; then
+if [ -z "${_command}" ]; then
   usage
 fi
 
@@ -23,6 +23,6 @@ case "${_command}" in
     ;;
 
   *)
-    usage
+    docker-compose "$@"
     ;;
 esac
