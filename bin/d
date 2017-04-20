@@ -1,0 +1,41 @@
+#!/bin/bash
+
+usage() {
+  echo "usage: $0 (logs|stop|ps) <container>"
+  exit 1
+}
+
+_command=$1
+if [ -z ${_command} ]; then
+  usage
+fi
+
+case "${1}" in
+  ps)
+    docker ps --format "table {{.Names}}\t{{.Image}}\t{{.CreatedAt}}\t{{.Status}}"
+    exit $?
+    ;;
+
+  logs)
+    _container=$2
+    if [ -z ${_container} ]; then
+      usage
+    fi
+    docker logs ${_container} 2>&1 | less
+    exit $?
+    ;;
+
+  stop)
+    _container=$2
+    if [ -z ${_container} ]; then
+      usage
+    fi
+    docker stop ${_container}
+    docker rm -v ${_container}
+    exit $?
+    ;;
+
+  *)
+    usage
+    ;;
+esac
