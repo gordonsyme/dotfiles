@@ -28,6 +28,21 @@ case "${1}" in
     exit $?
     ;;
 
+  exec)
+    _container=$2
+    if [ -z "${_container}" ]; then
+      usage
+    fi
+
+    _command=$3
+    if [ -z "${_command}" ]; then
+      _command=/bin/bash
+    fi
+    docker exec -it "${_container}" "${_command}"
+    exit $?
+    ;;
+
+
   stop)
     _container=$2
     if [ -z "${_container}" ]; then

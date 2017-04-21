@@ -4,10 +4,15 @@ __gordon_d() {
   cur="${COMP_WORDS[COMP_CWORD]}"
   prev="${COMP_WORDS[COMP_CWORD-1]}"
 
-  opts="ps logs stop"
+  opts="ps logs exec stop"
 
   case "${prev}" in
     logs)
+      __docker_complete_container_names
+      return 0
+      ;;
+
+    exec)
       __docker_complete_container_names
       return 0
       ;;
