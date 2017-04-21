@@ -6,11 +6,12 @@ usage() {
 }
 
 _command=$1
+shift
 if [ -z "${_command}" ]; then
   usage
 fi
 
-case "${1}" in
+case "${_command}" in
   ps)
     docker ps --format "table {{.Names}}\t{{.Image}}\t{{.CreatedAt}}\t{{.Status}}"
     exit $?
@@ -48,8 +49,8 @@ case "${1}" in
     if [ -z "${_container}" ]; then
       usage
     fi
-    docker stop "${_container}"
-    docker rm -v "${_container}"
+    docker stop "$@"
+    docker rm -v "$@"
     exit $?
     ;;
 

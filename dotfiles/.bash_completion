@@ -1,12 +1,22 @@
 __gordon_d() {
-  local cur prev opts
   COMPREPLY=()
-  cur="${COMP_WORDS[COMP_CWORD]}"
-  prev="${COMP_WORDS[COMP_CWORD-1]}"
+  local cur prev words cword opts
+  _get_comp_words_by_ref -n : cur prev words cword
 
-  opts="ps logs exec stop"
+  local commands="ps logs exec stop"
 
-  case "${prev}" in
+  local counter=1 command="${prev}"
+  while [ ${counter} -lt ${cword} ]; do
+    case "${words[$counter]}" in
+      stop)
+        command="stop"
+        break
+      ;;
+    esac
+    (( counter++ ))
+  done
+
+  case "${command}" in
     logs)
       __docker_complete_container_names
       return 0
@@ -26,7 +36,7 @@ __gordon_d() {
     ;;
   esac
 
-  COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
+  COMPREPLY=($(compgen -W "${commands}" -- ${cur}))
   return 0
 }
 complete -F __gordon_d d
@@ -50,6 +60,7 @@ __gordon_dc() {
         break
       ;;
     esac
+    (( counter++ ))
   done
 
   case "${command}" in
