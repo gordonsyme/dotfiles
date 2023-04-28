@@ -1,3 +1,0 @@
-source ${ROOT}/lib/functions
-
-brew_cask zoomus
