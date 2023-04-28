@@ -1,36 +1,32 @@
 # vim:ft=sh
 
-source ${ROOT}/lib/functions
+brew install vim
 
-source ${ROOT}/scripts/git
+PACKDIR="~/.vim/pack/plugins/start"
 
-if ! (type vim_plugin | head -1 | grep "is a function") 2>/dev/null; then
-  vim_plugin() {
-    local github_repo=$1
+mkdir -p ~/.vim/pack
+cd ~/.vim/pack
+git init
 
-    mkdir -p ~/.vim/bundle
-    clone_github ${github_repo} ~/.vim/bundle
-  }
-fi
-
-brew_install vim
-
-vim_plugin tpope/vim-pathogen
-vim_plugin kien/rainbow_parentheses.vim
-vim_plugin bling/vim-airline
-vim_plugin tpope/vim-classpath
-vim_plugin guns/vim-clojure-static
-vim_plugin altercation/vim-colors-solarized
-vim_plugin tpope/vim-fireplace
-vim_plugin tpope/vim-fugitive
-
-if [ ! -L ~/.vim/autoload ]; then
-  (
-    cd ~/.vim
-    ln -fns bundle/vim-pathogen/autoload
-  )
-fi
+git submodule add git@github.com:dense-analysis/ale "${PACKDIR}/ale"
+git submodule add git@github.com:vim-scripts/paredit.vim "${PACKDIR}/paredit.vim"
+git submodule add git@github.com:kien/rainbow_parentheses.vim.git "${PACKDIR}/rainbow_parentheses.vim"
+git submodule add git@github.com:rust-lang/rust.vim.git "${PACKDIR}/rust.vim"
+git submodule add git@github.com:bling/vim-airline.git "${PACKDIR}/vim-airline"
+git submodule add git@github.com:tpope/vim-classpath.git "${PACKDIR}/vim-classpath"
+git submodule add git@github.com:guns/vim-clojure-static.git "${PACKDIR}/vim-clojure-static"
+git submodule add git@github.com:altercation/vim-colors-solarized.git "${PACKDIR}/vim-colors-solarized"
+git submodule add git@github.com:tpope/vim-fireplace.git "${PACKDIR}/vim-fireplace"
+git submodule add git@github.com:tpope/vim-fugitive.git "${PACKDIR}/vim-fugitive"
+git submodule add git@github.com:fatih/vim-go.git "${PACKDIR}/vim-go"
+git submodule add git@github.com:tpope/vim-rhubarb.git "${PACKDIR}/vim-rhubarb"
 
 dotfile .vimrc
 mkdir -p ~/.vim/include
 cp ${INCLUDES_ROOT}/vim/* ~/.vim/include
+
+echo > update_plugins.sh <<_EOF
+#!/bin/bash
+git submodule update --remote --merge
+git commit
+_EOF
