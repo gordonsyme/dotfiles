@@ -1,4 +1,0 @@
-source ${ROOT}/lib/functions
-
-brew_cask visualvm
-brew_cask netbeans

@@ -1,3 +1,7 @@
+[user]
+  email = gordonsyme@gmail.com
+  name = Gordon Syme
+  signingkey = /Users/gordon/.ssh/id_ed25519_sk.pub
 [color]
     ui = true
 [core]
@@ -6,6 +10,25 @@
 [alias]
     dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\"%cn\" <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
 [push]
-    default = tracking
+  default = tracking
+  autoSetupRemote = true
 [rerere]
-	enabled = true
+  enabled = true
+[rebase]
+  autoStash = true
+[commit]
+  gpgsign = true
+  verbose = true
+#[diff.gpg]
+#  textconv = "gpg2 --no-tty --decrypt"
+#[url "ssh://git@github.com"]
+# insteadOf = https://github.com
+[help]
+  autocorrect = 20
+[gpg]
+  program = gpg2
+  format = ssh
+[init]
+  defaultBranch = main
+[gc]
+  auto = 0

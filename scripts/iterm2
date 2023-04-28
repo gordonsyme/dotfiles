@@ -1,6 +1,0 @@
-# vim: set ft=sh
-
-source ${ROOT}/lib/functions
-
-brew_cask iterm2
-

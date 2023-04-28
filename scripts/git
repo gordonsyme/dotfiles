@@ -1,6 +1,4 @@
-source ${ROOT}/lib/functions
-
-brew_install git
+brew install git
 
 cp ${DOTFILES_ROOT}/.gitconfig ~/.gitconfig
 cp ${DOTFILES_ROOT}/.gitexcludes ~/.gitexcludes
