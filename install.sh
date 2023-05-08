@@ -8,3 +8,4 @@ source scripts/git
 source scripts/keyboard
 source scripts/bash
 source scripts/vim
+source scripts/clojure

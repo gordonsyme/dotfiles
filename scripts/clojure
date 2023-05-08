@@ -1,0 +1,5 @@
+#!/bin/bash
+
+brew install graalvm/tap/graalvm-ce-lts-java11
+brew install clojure/tools/clojure
+brew install borkdude/brew/clj-kondo

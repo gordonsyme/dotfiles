@@ -1,6 +1,10 @@
 export HISTCONTROL=ignoreboth:erasedups
 shopt -s histappend
 
+if [ -d "/opt/homebrew/bin" ]; then
+  export PATH="/opt/homebrew/bin:${PATH}"
+fi
+
 if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
   source "$(brew --prefix)/etc/bash_completion"
 fi

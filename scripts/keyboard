@@ -1,1 +1,2 @@
-cp ${ROOT}/include/Keyboard\ Layouts/* ~/Libary/Keyboard\ Layouts/
+mkdir -p "~/Library/Keyboard Layouts"
+cp "${ROOT}/include/Keyboard\ Layouts/*" "~/Libary/Keyboard Layouts/"

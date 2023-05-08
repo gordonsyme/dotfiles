@@ -2,7 +2,7 @@
 
 brew install vim
 
-PACKDIR="~/.vim/pack/plugins/start"
+PACKDIR="plugins/start"
 
 mkdir -p ~/.vim/pack
 cd ~/.vim/pack
@@ -20,13 +20,16 @@ git submodule add git@github.com:tpope/vim-fireplace.git "${PACKDIR}/vim-firepla
 git submodule add git@github.com:tpope/vim-fugitive.git "${PACKDIR}/vim-fugitive"
 git submodule add git@github.com:fatih/vim-go.git "${PACKDIR}/vim-go"
 git submodule add git@github.com:tpope/vim-rhubarb.git "${PACKDIR}/vim-rhubarb"
+git submodule add git@github.com:editorconfig/editorconfig-vim.git "${PACKDIR}/editorconfig-vim"
 
 dotfile .vimrc
 mkdir -p ~/.vim/include
-cp ${INCLUDES_ROOT}/vim/* ~/.vim/include
+cp -r ${INCLUDES_ROOT}/vim/* ~/.vim/include
 
 echo > update_plugins.sh <<_EOF
 #!/bin/bash
 git submodule update --remote --merge
 git commit
 _EOF
+
+chmod u+x update_plugins.sh
