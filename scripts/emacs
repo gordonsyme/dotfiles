@@ -1,0 +1,11 @@
+#!/bin/bash
+
+brew tap railwaycat/emacsport
+
+brew install emacs-mac
+
+mkdir -p /Users/gordon/.config
+git clone --depth 1 https://github.com/doomemacs/doomemacs /Users/gordon/.config/emacs
+/Users/gordon/.config/emacs/bin/doom install
+
+cp "${INCLUDES_ROOT}/emacs/doom.d/*" /Users/gordon/.doom.d/

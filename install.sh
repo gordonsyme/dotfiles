@@ -9,3 +9,4 @@ source scripts/keyboard
 source scripts/bash
 source scripts/vim
 source scripts/clojure
+source scripts/emacs
