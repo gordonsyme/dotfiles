@@ -1,5 +1,7 @@
 source ${ROOT}/lib/functions
 
+brew install bash-completion
+
 dotfile .bashrc
 dotfile .bash_profile
 dotfile .bash_aliases
