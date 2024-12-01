@@ -1,11 +1,18 @@
 #!/bin/bash
 
-brew tap railwaycat/emacsport
+# Dependencies that need independent installation
+brew install ripgrep coreutils fd shellcheck
+
+brew tap railwaycat/emacsmacport
 
 brew install emacs-mac
 
 mkdir -p /Users/gordon/.config
-git clone --depth 1 https://github.com/doomemacs/doomemacs /Users/gordon/.config/emacs
+git clone --depth 1 git@github.com:doomemacs/doomemacs /Users/gordon/.config/emacs
 /Users/gordon/.config/emacs/bin/doom install
 
-cp "${INCLUDES_ROOT}/emacs/doom.d/*" /Users/gordon/.doom.d/
+# Need to manually sync init.el etc
+doom sync
+
+# And create an alias to emacs
+osascript -e 'tell application "Finder" to make alias file to POSIX file "/opt/homebrew/opt/emacs-mac/Emacs.app" at POSIX file "/Applications"'
