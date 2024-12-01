@@ -17,7 +17,7 @@ set nowrap
 set nonumber
 set bs=2
 
-set diffopt+=vertical
+set diffopt+=vertical,iwhiteall,closeoff
 
 set fo=croq
 inoremap # X#
@@ -55,10 +55,10 @@ set laststatus=2
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \}
-let g:ale_completion_enabled = 1
-set omnifunc=ale#completion#OmniFunc
+let g:ale_completion_enabled = 0
+let g:ale_fix_on_save = 1
+"set omnifunc=ale#completion#OmniFunc
 
-" Vimwiki
-let g:vimwiki_list = [{'path': '~/Documents/wiki', 'syntax': 'markdown'}]
-let g:vimwiki_global_ext = 0
-" let g:vimwiki_folding = 'expr'
+" disable vim-fireplace's keymappings, I want to use ALE+LSP for code
+" navigation
+let g:fireplace_no_maps = 1

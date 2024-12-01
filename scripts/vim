@@ -5,7 +5,7 @@ brew install vim
 PACKDIR="plugins/start"
 
 mkdir -p ~/.vim/pack
-cd ~/.vim/pack
+pushd ~/.vim/pack
 git init
 
 git submodule add git@github.com:dense-analysis/ale "${PACKDIR}/ale"
@@ -29,7 +29,9 @@ cp -r ${INCLUDES_ROOT}/vim/* ~/.vim/include
 echo > update_plugins.sh <<_EOF
 #!/bin/bash
 git submodule update --remote --merge
+git add plugins
 git commit
 _EOF
 
 chmod u+x update_plugins.sh
+popd

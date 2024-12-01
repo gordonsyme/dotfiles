@@ -35,7 +35,9 @@ setlocal shiftwidth=2
 " activate Dash.app
 nmap <silent> <leader>d <Plug>DashSearch
 
-let b:ale_linters = {'clojure': ['clj-kondo']}
+" let b:ale_linters = {'clojure': ['clj-kondo', 'clojure-lsp']}
+let b:ale_linters = {'clojure': ['clojure-lsp']}
+let b:ale_fixers = {'clojure': ['cljfmt', 'trim_whitespace']}
 
 " Circle testing bindings
 function! TestToplevel() abort
@@ -70,3 +72,8 @@ nmap <leader><c-c><c-k> :Eval (clojure.test/test-ns *ns*)<cr>
 " Standard formatexpr setting prevents gq from wrapping strings, which is
 " annoying for docstrings.
 set formatexpr&
+
+nmap ]<c-d> :ALEGoToDefinition<Return>
+nmap [<c-d> :ALEGoToDefinition<Return>
+nmap <c-w><c-d> :ALEGoToDefinition -split<Return>
+nmap <c-w>d :ALEGoToDefinition -split<Return>

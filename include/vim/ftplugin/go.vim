@@ -24,6 +24,7 @@ RainbowParenthesesLoadSquare
 RainbowParenthesesLoadBraces
 
 let b:ale_linters = {'go': ['gopls']}
+let b:ale_fixers = {'go': ['gofmt', 'goimports', 'remove_trailing_lines', 'trim_whitespace']}
 
 " enable gopls integration for vim-go
 let b:go_def_mode='gopls'
@@ -31,7 +32,6 @@ let b:go_info_mode='gopls'
 
 " activate Dash.app
 nmap <silent> <leader>d <Plug>DashSearch
-
 
 " Some wrapping bindings from paredit. Keeping braces balanced, slurping etc.
 " aren't useful for Go.
@@ -60,3 +60,8 @@ nmap <silent> <leader>d <Plug>DashSearch
 
 nmap <C-C>, :GoTestFunc<cr>
 nmap <C-C><C-K> :GoTest<cr>
+
+nmap ]<c-d> :ALEGoToDefinition<Return>
+nmap [<c-d> :ALEGoToDefinition<Return>
+nmap <c-w><c-d> :ALEGoToDefinition -split<Return>
+nmap <c-w>d :ALEGoToDefinition -split<Return>
